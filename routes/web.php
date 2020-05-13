@@ -58,4 +58,26 @@ Route::namespace('Manager')->prefix('managers')->name('manager.')->group(functio
     Route::get('sub-categories/edit/{id}', 'SubCateController@edit')->name('sub-categories.edit');
     Route::post('sub-categories/update/{id}', 'SubCateController@update')->name('sub-categories.update');
     Route::post('sub-categories/delete/{id}', 'SubCateController@destroy')->name('sub-categories.delete');
+
+    Route::get('sizes', 'SizeController@index')->name('sizes');
+    Route::get('sizes/create', 'SizeController@create')->name('sizes.create');
+    Route::post('sizes/store', 'SizeController@store')->name('sizes.store');
+    Route::get('sizes/edit/{id}', 'SizeController@edit')->name('sizes.edit');
+    Route::post('sizes/update/{id}', 'SizeController@update')->name('sizes.update');
+    Route::post('sizes/delete/{id}', 'SizeController@destroy')->name('sizes.delete');
+
+    Route::get('countries', 'CountryController@index')->name('countries');
+    Route::get('countries/create', 'CountryController@create')->name('countries.create');
+    Route::post('countries/store', 'CountryController@store')->name('countries.store');
+    Route::get('countries/edit/{id}', 'CountryController@edit')->name('countries.edit');
+    Route::post('countries/update/{id}', 'CountryController@update')->name('countries.update');
+    Route::post('countries/delete/{id}', 'CountryController@destroy')->name('countries.delete');
+
+    Route::get('brands', 'BrandController@index')->name('brands');
+    Route::get('brands/create', 'BrandController@create')->name('brands.create');
+    Route::post('brands/store', 'BrandController@store')->name('brands.store');
+    Route::get('brands/edit/{id}', 'BrandController@edit')->name('brands.edit');
+    Route::post('brands/update/{id}', 'BrandController@update')->name('brands.update');
+    Route::post('brands/delete/{id}', 'BrandController@destroy')->name('brands.delete');
+    
 });
