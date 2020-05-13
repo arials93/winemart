@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Manager;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Manager\ManagerController;
 use Illuminate\Http\Request;
+use App\Activity;
 
-class DashboardController extends Controller
+class DashboardController extends ManagerController
 {
     public function index()
     {
-        return view('manager.dashboard');
+        $data['activities'] = Activity::with('user')->take(4)->orderby('id', 'desc')->get();
+        return view('manager.dashboard', $data);
     }
 }
