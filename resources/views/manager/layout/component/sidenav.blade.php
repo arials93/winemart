@@ -99,6 +99,32 @@
                 <span class="kt-menu__link-text">Sản phẩm</span></a>
             </li>
 
+            <li class="kt-menu__item @if (Str::contains(url()->current(), '/blog-categories')) kt-menu__item--active @endif" aria-haspopup="true">
+                <a href="{{ route("manager.blog-categories") }}" class="kt-menu__link "><span class="kt-menu__link-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <rect x="0" y="0" width="24" height="24"/>
+                            <path d="M4.5,3 L19.5,3 C20.3284271,3 21,3.67157288 21,4.5 L21,19.5 C21,20.3284271 20.3284271,21 19.5,21 L4.5,21 C3.67157288,21 3,20.3284271 3,19.5 L3,4.5 C3,3.67157288 3.67157288,3 4.5,3 Z M8,5 C7.44771525,5 7,5.44771525 7,6 C7,6.55228475 7.44771525,7 8,7 L16,7 C16.5522847,7 17,6.55228475 17,6 C17,5.44771525 16.5522847,5 16,5 L8,5 Z" fill="#000000"/>
+                        </g>
+                    </svg>
+            </span>
+                <span class="kt-menu__link-text">Loại bài viết</span></a>
+            </li>
+
+            <li class="kt-menu__item @if (Str::contains(url()->current(), '/blogs')) kt-menu__item--active @endif" aria-haspopup="true">
+                <a href="{{ route("manager.blogs") }}" class="kt-menu__link "><span class="kt-menu__link-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <rect x="0" y="0" width="24" height="24"/>
+                            <polygon fill="#000000" opacity="0.3" points="6 3 18 3 20 6.5 4 6.5"/>
+                            <path d="M6,5 L18,5 C19.1045695,5 20,5.8954305 20,7 L20,19 C20,20.1045695 19.1045695,21 18,21 L6,21 C4.8954305,21 4,20.1045695 4,19 L4,7 C4,5.8954305 4.8954305,5 6,5 Z M9,9 C8.44771525,9 8,9.44771525 8,10 C8,10.5522847 8.44771525,11 9,11 L15,11 C15.5522847,11 16,10.5522847 16,10 C16,9.44771525 15.5522847,9 15,9 L9,9 Z" fill="#000000"/>
+                        </g>
+                    </svg>
+                    
+            </span>
+                <span class="kt-menu__link-text">Bài viết</span></a>
+            </li>
+
 
             <li class="kt-menu__item @if (Str::contains(url()->current(), '/activities')) kt-menu__item--active @endif" aria-haspopup="true">
                 <a href="{{ route("manager.activities") }}" class="kt-menu__link "><span class="kt-menu__link-icon">

@@ -212,6 +212,7 @@ License: You must have a valid license purchased only from themeforest(the above
 		<script src="assets/plugins/general/jquery/dist/jquery.js" type="text/javascript"></script>
 		<script src="assets/plugins/general/popper.js/dist/umd/popper.js" type="text/javascript"></script>
 		<script src="assets/plugins/general/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
+		<script src="assets/plugins/general/tooltip.js/dist/umd/tooltip.min.js" type="text/javascript"></script>
 		<!--end:: Vendor Plugins -->
 
 		<!--end::Global Theme Bundle -->
@@ -233,6 +234,25 @@ License: You must have a valid license purchased only from themeforest(the above
 					readURL(this);
 				});
 			}
+
+			var initTooltip = function(el) {
+				var skin = el.data('skin') ? 'tooltip-' + el.data('skin') : '';
+				var width = el.data('width') == 'auto' ? 'tooltop-auto-width' : '';
+				var triggerValue = el.data('trigger') ? el.data('trigger') : 'hover';
+				var placement = el.data('placement') ? el.data('placement') : 'left';
+
+				el.tooltip({
+					trigger: triggerValue,
+					template: '<div class="tooltip ' + skin + ' ' + width + '" role="tooltip">\
+						<div class="arrow"></div>\
+						<div class="tooltip-inner"></div>\
+					</div>'
+				});
+			}
+
+			$('[data-toggle="kt-tooltip"]').each(function() {
+				initTooltip($(this));
+			});
 		</script>
 
 		@stack('scripts')

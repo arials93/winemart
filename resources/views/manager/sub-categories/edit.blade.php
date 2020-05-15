@@ -57,7 +57,7 @@
                             <div class="col-lg-6">
                                 <select name="cate_id" class="form-control">
                                     @foreach ($cates as $cate)
-                                        <option @if (old("cate_id") == $cate->id || $cate->id == $sub_category->cate_id) selected @endif value="{{$cate->id}}">{{$cate->name}}</option>
+                                        <option @if (old("cate_id") == $cate->id || $cate->id == $sub_category->cate_id && !old("cate_id")) selected @endif value="{{$cate->id}}">{{$cate->name}}</option>
                                     @endforeach
                                 </select>
                                 <span class="form-text @error('cate_id') text-danger @enderror">

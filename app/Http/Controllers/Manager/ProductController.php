@@ -19,7 +19,16 @@ class ProductController extends ManagerController
     {
         if ($request->search) {
             // tìm kiếm sản phẩm
-            $products = \App\Product::where('name', 'LIKE', '%'.$request->search.'%')->paginate(10);
+            $products = \App\Product::where('name', 'LIKE', '%'.$request->search.'%')
+                                      ->orWhereHas('size', function($query) use ($request) {
+                                            $query->where('capacity', 'LIKE', '%'.$request->search.'%');
+                                      })->orWhereHas('country', function($query) use ($request) {
+                                            $query->where('name', 'LIKE', '%'.$request->search.'%');
+                                      })->orWhereHas('brand', function($query) use ($request) {
+                                            $query->where('name', 'LIKE', '%'.$request->search.'%');
+                                      })->orWhereHas('sub_category', function($query) use ($request) {
+                                            $query->where('name', 'LIKE', '%'.$request->search.'%');
+                                      })->paginate(10);
         } else {
             $products = \App\Product::paginate(10);
         }
@@ -43,8 +52,9 @@ class ProductController extends ManagerController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ManagerCreateProduct $request)
     {
+        $data = $request->all();
         $path = $request->file('image')->store('products', 'public');
         $data['image'] = $path;
         $data['bestseller'] = $request->bestseller == 'true' ? true : false;

@@ -140,7 +140,7 @@
                             <div class="col-lg-6">
                                 <select name="size_id" class="form-control">
                                     @foreach ($sizes as $size)
-                                        <option @if (old("size_id") == $size->id || $size->id == $product->size_id) selected @endif 
+                                        <option @if (old("size_id") == $size->id || $size->id == $product->size_id && !old("size_id")) selected @endif 
                                             value="{{$size->id}}">{{$size->capacity}}</option>
                                     @endforeach
                                 </select>
@@ -154,7 +154,7 @@
                             <div class="col-lg-6">
                                 <select name="subcate_id" class="form-control">
                                     @foreach ($subcates as $subcate)
-                                        <option @if (old("subcate_id") == $subcate->id || $subcate->id == $product->subcate_id) selected @endif 
+                                        <option @if (old("subcate_id") == $subcate->id || $subcate->id == $product->subcate_id && !old("subcate_id")) selected @endif 
                                             value="{{$subcate->id}}">{{$subcate->name}}</option>
                                     @endforeach
                                 </select>
@@ -168,7 +168,7 @@
                             <div class="col-lg-6">
                                 <select name="brand_id" class="form-control">
                                     @foreach ($brands as $brand)
-                                        <option @if (old("brand_id") == $brand->id || $brand->id == $product->brand_id) selected @endif 
+                                        <option @if (old("brand_id") == $brand->id || $brand->id == $product->brand_id && !old("brand_id")) selected @endif 
                                             value="{{$brand->id}}">{{$brand->name}}</option>
                                     @endforeach
                                 </select>
@@ -182,7 +182,7 @@
                             <div class="col-lg-6">
                                 <select name="country_id" class="form-control">
                                     @foreach ($countries as $country)
-                                        <option @if (old("country_id") == $country->id || $country->id == $product->country_id) selected @endif 
+                                        <option @if (old("country_id") == $country->id || $country->id == $product->country_id && !old("country_id")) selected @endif 
                                             value="{{$country->id}}">{{$country->name}}</option>
                                     @endforeach
                                 </select>

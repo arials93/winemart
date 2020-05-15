@@ -1,11 +1,8 @@
 @extends('manager.layout.master')
 
 @section('content_head')
-@include('manager.layout.component.subheader', [
-    'main_text' => 'Danh sách sản phẩm',
-    'btn_url' => route('manager.products.create'),
-    'btn_text' => 'Thêm sản phẩm']
-)
+@include('manager.layout.component.subheader', ['main_text' => 'Danh sách loại bài viết', 'btn_url' =>
+route('manager.blog-categories.create'), 'btn_text' => 'Thêm loại bài viết'])
 @endsection
 
 @section('content')
@@ -21,11 +18,10 @@
         <div class="kt-section">
             <div class="kt-section__content">
                 <div class="float-right">
-                    <form method="GET" action="{{ route("manager.products") }}">
+                    <form method="GET" action="{{ route("manager.blog-categories") }}">
                         <div class="form-group ">
-                            <div class="input-group" data-toggle="kt-tooltip"
-                                data-original-title="Tìm kiếm sản phẩm theo tên, dung tích, loại sản phẩm, quốc gia, nhãn hiệu">
-                                <input name="search" value="@if (request()->search){{request()->search}}@endif" type="text" class="form-control" placeholder="Tìm sản phẩm">
+                            <div class="input-group">
+                                <input name="search" value="@if (request()->search){{request()->search}}@endif" type="text" class="form-control" placeholder="Tìm loại bài viết">
                                 <div class="input-group-append">
                                     <button class="btn btn-secondary" type="submit"><i class="px-0 flaticon-search-1"></i></button>
                                 </div>
@@ -37,48 +33,38 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Hình ảnh</th>
                             <th>Tên</th>
-                            <th>Mã vạch</th>
-                            <th>Giá</th>
-                            <th>Trong kho</th>
                             <th>Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($data as $product)
+                        @forelse ($data as $blog_cate)
                         <tr>
-                            <th scope="row"> {{ $product->id }} </th>
-                            <td>
-                                <img width="120px" src="{{ Storage::url($product->image) }}"/>
-                            </td>
-                            <td>{{ $product->name }}</td>
-                            <td>{{ $product->barcode }}</td>
-                            <td>{{ $product->price }}</td>
-                            <td>{{ $product->instock }}</td>
+                            <th scope="row"> {{ $blog_cate->id }} </th>
+                            <td>{{ $blog_cate->name }}</td>
                             <td>
                                 <div class="kt-section__content">
-                                    <a href="{{ route('manager.products.edit', $product->id) }}" class="btn btn-info"><i
+                                    <a href="{{ route('manager.blog-categories.edit', $blog_cate->id) }}" class="btn btn-info"><i
                                             class="px-0 flaticon-edit"></i></a>
-                                    <button data-target="#kt_modal_1_{{ $product->id }}" data-toggle="modal"
+                                    <button data-target="#kt_modal_1_{{ $blog_cate->id }}" data-toggle="modal"
                                         class="btn btn-danger"><i class="px-0 flaticon2-trash"></i></button>
 
                                     <!--begin::Modal-->
-                                    <div class="modal fade" id="kt_modal_1_{{ $product->id }}" tabindex="-1" role="dialog"
+                                    <div class="modal fade" id="kt_modal_1_{{ $blog_cate->id }}" tabindex="-1" role="dialog"
                                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <form class="modal-content" method="POST"
-                                                action="{{ route("manager.products.delete", $product->id) }}">
+                                                action="{{ route("manager.blog-categories.delete", $blog_cate->id) }}">
                                                 @csrf
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Xóa sản phẩm</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Xóa loại bài viết</h5>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
                                                     <div>
-                                                        <p>Bạn có chắc chắn muốn xóa sản phẩm này</p>
+                                                        <p>Bạn có chắc chắn muốn xóa loại bài viết này</p>
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
@@ -96,7 +82,7 @@
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="6">Không có sản phẩm nào<td>
+                            <td colspan="5">Không có loại sản phẩm nào<td>
                         </tr>
                         @endforelse
                     </tbody>
