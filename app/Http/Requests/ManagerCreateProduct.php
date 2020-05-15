@@ -38,6 +38,7 @@ class ManagerCreateProduct extends FormRequest
             'subcate_id' =>'exists:subcates,id',
             'image' => 'required|mimes:jpg,jpeg,png,gif',
         ];
+        
     }
 
      /**
@@ -67,7 +68,6 @@ class ManagerCreateProduct extends FormRequest
             'country_id.exists' => 'Quốc gia này không tồn tại',
             'size_id.exists' => 'Kích cỡ này không tồn tại',
             'subcate_id.exists' => 'Loại sản phẩm con này không tồn tại',
-            'image.required' => 'Vui lòng chọn hình ảnh',
             'image.mimes' => 'Hệ thống chỉ hỗ trợ (jpg, jpeg, png, gif)',
         ];
     }

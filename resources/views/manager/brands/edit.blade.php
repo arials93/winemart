@@ -1,7 +1,10 @@
 @extends('manager.layout.master')
 
 @section('content_head')
-@include('manager.layout.component.subheader', ['main_text' => 'Chi tiết nhãn hiệu', 'btn_url' => '#', 'btn_text' => ''])
+@include('manager.layout.component.subheader', [
+    'main_text' => 'Sửa nhãn hiệu', 
+    'btn_url' => route('manager.brands.create'), 
+    'btn_text' => 'Thêm nhãn hiệu'])
 @endsection
 
 @section('content')

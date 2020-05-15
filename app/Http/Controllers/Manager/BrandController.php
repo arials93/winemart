@@ -47,7 +47,7 @@ class BrandController extends ManagerController
     public function store(ManagerCreateBrand $request)
     {
         $data = $request->all();
-        $path = $path = $request->file('image')->store('brands', 'public');
+        $path = $request->file('image')->store('brands', 'public');
         $data['image'] = $path;
         $brand = Brand::create($data);
 
@@ -83,7 +83,7 @@ class BrandController extends ManagerController
         $old_name = $brand->name;
 
         if($request->file('image')) {
-            $path = $path = $request->file('image')->store('brands', 'public');
+            $path = $request->file('image')->store('brands', 'public');
             $data['image'] = $path;
 
             // xóa hình cũ

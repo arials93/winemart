@@ -1,7 +1,10 @@
 @extends('manager.layout.master')
 
 @section('content_head')
-@include('manager.layout.component.subheader', ['main_text' => 'Tạo sản phẩm', 'btn_url' => '#', 'btn_text' => ''])
+@include('manager.layout.component.subheader', [
+    'main_text' => 'Tạo sản phẩm', 
+    'btn_url' => '#',
+    'btn_text' => ''])
 @endsection
 
 @section('content')
@@ -81,12 +84,23 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label">Giá:</label>
+                            <label class="col-lg-3 col-form-label">Đơn giá:</label>
                             <div class="col-lg-6">
                                 <input type="text" name="price" value="{{ old('price') }}" class="form-control"
-                                    placeholder="Nhập giá">
+                                    placeholder="Nhập giá sản phẩm">
                                 <span class="form-text @error('price') text-danger @enderror">
-                                    @error('price') {{ $message }} @else {{ 'Vui lòng nhập giá' }}
+                                    @error('price') {{ $message }} @else {{ 'Vui lòng nhập giá sản phẩm' }}
+                                    @enderror
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-3 col-form-label">Tỉ lệ gỉam giá:</label>
+                            <div class="col-lg-6">
+                                <input type="text" name="sale" value="{{ old('sale') ?? '0'}}" class="form-control"
+                                    placeholder="Nhập tỉ lệ giảm giá">
+                                <span class="form-text @error('sale') text-danger @enderror">
+                                    @error('sale') {{ $message }} @else {{ 'Vui lòng nhập tỉ lệ giảm giá' }}
                                     @enderror
                                 </span>
                             </div>
@@ -96,16 +110,16 @@
                             <label class="col-lg-3 col-form-label">Số lượng trong kho:</label>
                             <div class="col-lg-6">
                                 <input type="text" name="instock" value="{{ old('instock') }}" class="form-control"
-                                    placeholder="Nhập số lượng">
+                                    placeholder="Nhập số lượng tồn">
                                 <span class="form-text @error('instock') text-danger @enderror">
-                                    @error('instock') {{ $message }} @else {{ 'Vui lòng nhập số  lượng' }}
+                                    @error('instock') {{ $message }} @else {{ 'Vui lòng nhập số lượng tồn' }}
                                     @enderror
                                 </span>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label"></label>
+                            <label class="col-lg-3 col-form-label">Sản phẩm thuộc:</label>
                             <div class="col-lg-6">
                                 <div class="kt-radio-inline">
                                     <label class="kt-radio kt-radio--bold kt-radio--success">

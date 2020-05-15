@@ -21,9 +21,9 @@ class ProductController extends ManagerController
             // tìm kiếm sản phẩm
             $products = \App\Product::where('name', 'LIKE', '%'.$request->search.'%')->paginate(10);
         } else {
-            $products = \App\Product::with('category')->paginate(10);
+            $products = \App\Product::paginate(10);
         }
-        // $categorys;
+        // $xuất nhiều sản phẩm;
         return view('manager.products.index', ['data' => $products]);
     }
 
@@ -43,16 +43,12 @@ class ProductController extends ManagerController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ManagerCreateProduct $request)
+    public function store(Request $request)
     {
-        dd($request->all());
-        $data = $request->all();
-        $path = $path = $request->file('image')->store('products', 'public');
+        $path = $request->file('image')->store('products', 'public');
         $data['image'] = $path;
         $data['bestseller'] = $request->bestseller == 'true' ? true : false;
-        // dd($data);
         $product = \App\Product::create($data);
-
         //lưu lịch sử hoạt động
         $this->save_activity('Đã tạo sản phẩm <b class="text-primary">'.$product->name.'</b>');
         return redirect()->route('manager.products.edit', $product->id)->with('msg', 'Đã tạo sản phẩm thành công');
@@ -84,8 +80,10 @@ class ProductController extends ManagerController
         $product = \App\Product::findOrFail($id);
         $old_name = $product->name;
 
+        $data['bestseller'] = $data['bestseller'] == 'true' ? true : false;
+
         if($request->file('image')) {
-            $path = $path = $request->file('image')->store('products', 'public');
+            $path = $request->file('image')->store('products', 'public');
             $data['image'] = $path;
 
             // xóa hình cũ

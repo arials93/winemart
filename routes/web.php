@@ -98,5 +98,6 @@ Route::namespace('Manager')->prefix('managers')->name('manager.')->group(functio
         Route::post($route.'/update/{id}', $controller.'@update')->name($route.'.update');
         Route::post($route.'/delete/{id}', $controller.'@destroy')->name($route.'.delete');
     }
+
     
 });

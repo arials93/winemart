@@ -59,7 +59,7 @@
                         </div>
                     </div>
                     <div class="form-group row @if (auth()->user()->id == $user->id) d-none @endif">
-                        <label class="col-lg-3 col-form-label">Cấp quyền quản trị</label>
+                        <label class="col-lg-3 col-form-label">Cấp quyền quản trị:</label>
                         <div class="col-lg-6">
                             <div class="kt-radio-inline">
                                 <label class="kt-radio kt-radio--bold kt-radio--success">

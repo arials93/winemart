@@ -34,18 +34,19 @@ class Product extends Model
     ];
 
     public function size() {
-        return $this->belongsTo('App/Size', 'size_id');
+        return $this->belongsTo('App\Size', 'size_id');
     }
 
     public function country() {
-        return $this->belongsTo('App/Country', 'country_id');
+        return $this->belongsTo('App\Country', 'country_id');
     }
 
     public function brand() {
-        return $this->belongsTo('App/Brand', 'brand_id');
+        return $this->belongsTo('App\Brand', 'brand_id');
     }
 
     public function sub_category() {
-        return $this->belongsTo('App/SubCategory', 'subcate_id');
+        return $this->belongsTo('App\SubCategory', 'subcate_id');
     }
+
 }

@@ -50,7 +50,7 @@ class SubCateController extends ManagerController
     public function store(ManagerCreateSubCategory $request)
     {
         $data = $request->all();
-        $path = $path = $request->file('image')->store('categories', 'public');
+        $path = $request->file('image')->store('categories', 'public');
         $data['image'] = $path;
         $sub_cate = SubCategory::create($data);
 
@@ -86,12 +86,11 @@ class SubCateController extends ManagerController
     public function update(ManagerUpdateSubCategory $request, $id)
     {
         $data = $request->all();
-        // dd($data);
         $sub_category = SubCategory::findOrFail($id);
         $old_name = $sub_category->name;
 
         if($request->file('image')) {
-            $path = $path = $request->file('image')->store('categories', 'public');
+            $path = $request->file('image')->store('categories', 'public');
             $data['image'] = $path;
 
             // xóa hình cũ

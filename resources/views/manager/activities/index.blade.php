@@ -37,6 +37,7 @@
                         <tr>
                             <th>#</th>
                             <th>Tài khoản</th>
+                            <th>Ngày hoạt động</th>
                             <th>Nội dung hoạt động</th>
                         </tr>
                     </thead>
@@ -45,6 +46,7 @@
                         <tr>
                             <th scope="row"> {{ $activity->id }} </th>
                             <td>{{ $activity->user->name }}</td>
+                            <td>{{date_format($activity->created_at,'d/m/Y | H:i:s')}}</td>
                             <td>{!! $activity->content !!}</td>
                         </tr>
                         @empty

@@ -2,9 +2,9 @@
 
 @section('content_head')
 @include('manager.layout.component.subheader', [
-    'main_text' => 'Chi tiết loại sản phẩm con', 
-    'btn_url' => '#', 
-    'btn_text' => ''])
+    'main_text' => 'Sửa loại sản phẩm con', 
+    'btn_url' => route('manager.sub-categories.create'), 
+    'btn_text' => 'Thêm loại sản phẩm con'])
 @endsection
 
 @section('content')
