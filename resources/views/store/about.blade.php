@@ -4,6 +4,7 @@
 
     @include('store.layout.component.wrap-page')
 
+    {{-- Chính sách công ty --}}
     <section class="ftco-intro">
         <div class="container">
             <div class="row no-gutters">
@@ -13,9 +14,10 @@
                             <span class="flaticon-support"></span>
                         </div>
                         <div class="text">
-                            <h2>Online Support 24/7</h2>
-                            <p>A small river named Duden flows by their place and supplies it with the necessary
-                                regelialia.</p>
+                            <h2>Hỗ trợ trực tuyến</h2>
+                            <p>
+                                Dịch vụ tư vấn 24/7 <br> Gọi ngay 1900.636.035
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -25,9 +27,10 @@
                             <span class="flaticon-cashback"></span>
                         </div>
                         <div class="text">
-                            <h2>Money Back Guarantee</h2>
-                            <p>A small river named Duden flows by their place and supplies it with the necessary
-                                regelialia.</p>
+                            <h2>Chính sách đổi trả</h2>
+                            <p>
+                                Đổi trả miễn phí trong 3 ngày
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -37,9 +40,10 @@
                             <span class="flaticon-free-delivery"></span>
                         </div>
                         <div class="text">
-                            <h2>Free Shipping &amp; Return</h2>
-                            <p>A small river named Duden flows by their place and supplies it with the necessary
-                                regelialia.</p>
+                            <h2>Vận chuyển miễn phí</h2>
+                            <p>
+                                Đối với đơn hàng trên 500k
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -47,6 +51,7 @@
         </div>
     </section>
 
+    {{-- Giới thiệu --}}
     <section class="ftco-section ftco-no-pb">
         <div class="container">
             <div class="row">
@@ -55,168 +60,34 @@
                 </div>
                 <div class="col-md-6 wrap-about pl-md-5 ftco-animate py-5">
                     <div class="heading-section">
-                        <span class="subheading">Since 1905</span>
-                        <h2 class="mb-4">Desire meets a new Taste</h2>
+                        <span class="subheading">Từ 2010</span>
+                        <h2 class="mb-4">Giới thiệu Winemart</h2>
 
-                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.
-                            It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-                        <p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it
-                            would have been rewritten a thousand times and everything that was left from its origin
-                            would be the word "and" and the Little Blind Text should turn around and return to its own,
-                            safe country.</p>
+                        <p>Thương hiệu Winemart được thành lập vào năm 2010 với mục tiêu đem 
+                            lại cho người tiêu dùng những dịch vụ và sản phẩm tốt nhất.</p>
+                        <p>Winemart chuyên cung cấp các loại rượu vang, rượu mạnh, bia nhập khẩu cùng với 
+                            các loại thực phẩm cao cấp khác như Chocolate, trà, cà phê, mứt, trái cây sấy khô,… 
+                            từ các nhãn hiệu cao cấp, thiết kế riêng phục vụ từng đối tượng khách hàng.
+                        </p>
+                        <p>
+                            - Lĩnh vực kinh doanh: Phân phối các nhãn hiệu rượu cao cấp.
+                            Thiết kế và gói quà tết theo yêu cầu cho các doanh nghiệp và khách hàng.
+                        </p>
+                        <p>
+                            - Sứ mệnh: Phân phối các loại rượu cao cấp và thực phẩm chất lượng có xuất xứ rõ ràng.
+                        </p>
+                        <p>
+                            - Mục tiêu: Winemart không ngừng tìm hiểu thị trường, nắm bắt thị hiếu của người tiêu dùng,
+                             luôn quan tâm chú trọng nâng cao chất lượng dịch vụ và tìm kiếm nguồn cung ứng tốt với 
+                             mục tiêu đem lại cho người tiêu dùng những sản phẩm, dịch vụ tốt nhất.
+                        </p>
                         <p class="year">
-                            <strong class="number" data-number="115">0</strong>
-                            <span>Years of Experience In Business</span>
+                            Với
+                            <strong class="number" data-number="10">0</strong>
+                            <span>năm kinh nghiệm trong kinh doanh.</span>
                         </p>
                     </div>
 
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="ftco-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2 col-md-4 ">
-                    <div class="sort w-100 text-center ftco-animate">
-                        <div class="img" style="background-image: url(images/kind-1.jpg);"></div>
-                        <h3>Brandy</h3>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 ">
-                    <div class="sort w-100 text-center ftco-animate">
-                        <div class="img" style="background-image: url(images/kind-2.jpg);"></div>
-                        <h3>Gin</h3>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 ">
-                    <div class="sort w-100 text-center ftco-animate">
-                        <div class="img" style="background-image: url(images/kind-3.jpg);"></div>
-                        <h3>Rum</h3>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 ">
-                    <div class="sort w-100 text-center ftco-animate">
-                        <div class="img" style="background-image: url(images/kind-4.jpg);"></div>
-                        <h3>Tequila</h3>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 ">
-                    <div class="sort w-100 text-center ftco-animate">
-                        <div class="img" style="background-image: url(images/kind-5.jpg);"></div>
-                        <h3>Vodka</h3>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 ">
-                    <div class="sort w-100 text-center ftco-animate">
-                        <div class="img" style="background-image: url(images/kind-6.jpg);"></div>
-                        <h3>Whiskey</h3>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section class="ftco-section testimony-section img" style="background-image: url(images/bg_4.jpg);">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row justify-content-center mb-5">
-                <div class="col-md-7 text-center heading-section heading-section-white ftco-animate">
-                    <span class="subheading">Testimonial</span>
-                    <h2 class="mb-3">Happy Clients</h2>
-                </div>
-            </div>
-            <div class="row ftco-animate">
-                <div class="col-md-12">
-                    <div class="carousel-testimony owl-carousel ftco-owl">
-                        <div class="item">
-                            <div class="testimony-wrap py-4">
-                                <div class="icon d-flex align-items-center justify-content-center"><span
-                                        class="fa fa-quote-left"></div>
-                                <div class="text">
-                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries
-                                        Vokalia and Consonantia, there live the blind texts.</p>
-                                    <div class="d-flex align-items-center">
-                                        <div class="user-img" style="background-image: url(images/person_1.jpg)"></div>
-                                        <div class="pl-3">
-                                            <p class="name">Roger Scott</p>
-                                            <span class="position">Marketing Manager</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimony-wrap py-4">
-                                <div class="icon d-flex align-items-center justify-content-center"><span
-                                        class="fa fa-quote-left"></div>
-                                <div class="text">
-                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries
-                                        Vokalia and Consonantia, there live the blind texts.</p>
-                                    <div class="d-flex align-items-center">
-                                        <div class="user-img" style="background-image: url(images/person_2.jpg)"></div>
-                                        <div class="pl-3">
-                                            <p class="name">Roger Scott</p>
-                                            <span class="position">Marketing Manager</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimony-wrap py-4">
-                                <div class="icon d-flex align-items-center justify-content-center"><span
-                                        class="fa fa-quote-left"></div>
-                                <div class="text">
-                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries
-                                        Vokalia and Consonantia, there live the blind texts.</p>
-                                    <div class="d-flex align-items-center">
-                                        <div class="user-img" style="background-image: url(images/person_3.jpg)"></div>
-                                        <div class="pl-3">
-                                            <p class="name">Roger Scott</p>
-                                            <span class="position">Marketing Manager</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimony-wrap py-4">
-                                <div class="icon d-flex align-items-center justify-content-center"><span
-                                        class="fa fa-quote-left"></div>
-                                <div class="text">
-                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries
-                                        Vokalia and Consonantia, there live the blind texts.</p>
-                                    <div class="d-flex align-items-center">
-                                        <div class="user-img" style="background-image: url(images/person_1.jpg)"></div>
-                                        <div class="pl-3">
-                                            <p class="name">Roger Scott</p>
-                                            <span class="position">Marketing Manager</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="testimony-wrap py-4">
-                                <div class="icon d-flex align-items-center justify-content-center"><span
-                                        class="fa fa-quote-left"></div>
-                                <div class="text">
-                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries
-                                        Vokalia and Consonantia, there live the blind texts.</p>
-                                    <div class="d-flex align-items-center">
-                                        <div class="user-img" style="background-image: url(images/person_2.jpg)"></div>
-                                        <div class="pl-3">
-                                            <p class="name">Roger Scott</p>
-                                            <span class="position">Marketing Manager</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -229,31 +100,31 @@
                     <div class="block-18 py-4 mb-4">
                         <div class="text align-items-center">
                             <strong class="number" data-number="3000">0</strong>
-                            <span>Our Satisfied Customers</span>
+                            <span>Khách hàng hài lòng</span>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
                     <div class="block-18 py-4 mb-4">
                         <div class="text align-items-center">
-                            <strong class="number" data-number="115">0</strong>
-                            <span>Years of Experience</span>
+                            <strong class="number" data-number="10">0</strong>
+                            <span>Năm kinh nghiệm</span>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
                     <div class="block-18 py-4 mb-4">
                         <div class="text align-items-center">
-                            <strong class="number" data-number="100">0</strong>
-                            <span>Kinds of Liquor</span>
+                            <strong class="number" data-number="150">0</strong>
+                            <span>Đơn hàng yêu cầu</span>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
                     <div class="block-18 py-4 mb-4">
                         <div class="text align-items-center">
-                            <strong class="number" data-number="40">0</strong>
-                            <span>Our Branches</span>
+                            <strong class="number" data-number="20">0</strong>
+                            <span>Nhà cung cấp</span>
                         </div>
                     </div>
                 </div>

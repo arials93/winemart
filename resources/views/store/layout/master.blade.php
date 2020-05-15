@@ -32,8 +32,8 @@
             <div class="row">
                 <div class="col-md-6 d-flex align-items-center">
                     <p class="mb-0 phone pl-md-2">
-                        <a href="#" class="mr-2"><span class="fa fa-phone mr-1"></span> +00 1234 567</a>
-                        <a href="#"><span class="fa fa-paper-plane mr-1"></span> youremail@email.com</a>
+                        <a href="#" class="mr-2"><span class="fa fa-phone mr-1"></span> 1900 636035</a>
+                        <a href="#"><span class="fa fa-paper-plane mr-1"></span> marketing@winemart.vn</a>
                     </p>
                 </div>
                 <div class="col-md-6 d-flex justify-content-md-end">
@@ -79,7 +79,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Liquor <span>store</span></a>
+            <a class="navbar-brand" href="/">Wine<span>mart</span></a>
             <div class="order-lg-last btn-group">
                 <a href="#" class="btn-cart dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
@@ -141,8 +141,8 @@
                         </li>
                     @endforeach
                     <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-                    <li class="nav-item"><a href="about.html" class="nav-link">Giới thiệu</a></li>
-                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li class="nav-item"><a href="{{ asset('/about') }}" class="nav-link">Giới thiệu</a></li>
+                    <li class="nav-item"><a href="{{ asset('/contact') }}" class="nav-link">Liên hệ</a></li>
                 </ul>
             </div>
         </div>
@@ -159,8 +159,8 @@
             <div class="row mb-5">
                 <div class="col-sm-12 col-md">
                     <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2 logo"><a href="#">Liquor <span>Store</span></a></h2>
-                        <p>Far far away, behind the word mountains, far from the countries.</p>
+                        <h2 class="ftco-heading-2 logo"><a href="/">Wine<span>mart</span></a></h2>
+                        <p>Phân phối các loại rượu cao cấp và thực phẩm chất lượng có xuất xứ rõ ràng.</p>
                         <ul class="ftco-footer-social list-unstyled mt-2">
                             <li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
                             <li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
@@ -170,48 +170,63 @@
                 </div>
                 <div class="col-sm-12 col-md">
                     <div class="ftco-footer-widget mb-4 ml-md-4">
-                        <h2 class="ftco-heading-2">My Accounts</h2>
+                        <h2 class="ftco-heading-2">Tài khoản</h2>
                         <ul class="list-unstyled">
-                            <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>My Account</a></li>
-                            <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Register</a></li>
-                            <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Log In</a></li>
-                            <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>My Order</a></li>
+                            @if (Auth::check())
+                                <li>
+                                    <a title="Thông tin cá nhân" href="{{ route('store.account.info')}}">
+                                        <span class="fa fa-chevron-right mr-2"></span>{{Auth::user()->email}} 
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                    <span class="fa fa-chevron-right mr-2"></span>Đăng xuất
+                                    </a>
+                                </li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>                                                            
+                            @else
+                                <li><a class="mx-2" href="{{ asset('register') }}">
+                                    <span class="fa fa-chevron-right mr-2"></span>Đăng ký
+                                </a></li>
+                                <li><a href="{{ asset('login') }}"><span class="fa fa-chevron-right mr-2"></span>Đăng nhập</a></li>
+                            @endif
                         </ul>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md">
                     <div class="ftco-footer-widget mb-4 ml-md-4">
-                        <h2 class="ftco-heading-2">Information</h2>
+                        <h2 class="ftco-heading-2">Thông tin</h2>
                         <ul class="list-unstyled">
-                            <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>About us</a></li>
-                            <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Catalog</a></li>
-                            <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Contact us</a></li>
-                            <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Term &amp; Conditions</a></li>
+                            <li><a href="{{ asset('/about') }}"><span class="fa fa-chevron-right mr-2"></span>Về chúng tôi</a></li>
+                            <li><a href="{{ asset('/contact') }}"><span class="fa fa-chevron-right mr-2"></span>Liên hệ</a></li>
+                            <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Chính sách giao hàng</a></li>
+                            <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Chính sách đổi trả</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md">
                     <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2">Quick Link</h2>
+                        <h2 class="ftco-heading-2">Rượu</h2>
                         <ul class="list-unstyled">
-                            <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>New User</a></li>
-                            <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Help Center</a></li>
-                            <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Report Spam</a></li>
-                            <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Faq's</a></li>
+                            <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Rượu vang</a></li>
+                            <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Rượu mạnh</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md">
                     <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2">Have a Questions?</h2>
+                        <h2 class="ftco-heading-2">Cửa hàng</h2>
                         <div class="block-23 mb-3">
                             <ul>
-                                <li><span class="icon fa fa-map marker"></span><span class="text">203 Fake St. Mountain
-                                        View, San Francisco, California, USA</span></li>
-                                <li><a href="#"><span class="icon fa fa-phone"></span><span class="text">+2 392 3929
-                                            210</span></a></li>
+                                <li><span class="icon fa fa-map marker"></span>
+                                    <span class="text">258 Phan Xích Long, P.2, Q.Phú Nhuận, TP.HCM</span></li>
+                                <li><a href="#"><span class="icon fa fa-phone"></span><span class="text">1900 636035</span></a></li>
                                 <li><a href="#"><span class="icon fa fa-paper-plane pr-4"></span><span
-                                            class="text">info@yourdomain.com</span></a></li>
+                                            class="text">marketing@winemart.vn</span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -224,14 +239,11 @@
                     <div class="col-md-12">
 
                         <p class="mb-0" style="color: rgba(255,255,255,.5);">
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                             Copyright &copy;<script>
                                 document.write(new Date().getFullYear());
 
-                            </script> All rights reserved | This template is made with <i
-                                class="fa fa-heart color-danger" aria-hidden="true"></i> by <a
-                                href="https://colorlib.com" target="_blank">Colorlib.com</a>
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </script> Winemart <i
+                                class="fa fa-heart color-danger" aria-hidden="true"></i>                           
                         </p>
                     </div>
                 </div>
