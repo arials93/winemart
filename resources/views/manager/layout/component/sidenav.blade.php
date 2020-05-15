@@ -62,7 +62,7 @@
                 <span class="kt-menu__link-text">Kích cỡ</span></a>
             </li>
 
-            <li class="kt-menu__item @if (Str::contains(url()->current(), '/sizes')) kt-menu__item--active @endif" aria-haspopup="true">
+            <li class="kt-menu__item @if (Str::contains(url()->current(), '/countries')) kt-menu__item--active @endif" aria-haspopup="true">
                 <a href="{{ route("manager.countries") }}" class="kt-menu__link "><span class="kt-menu__link-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -74,7 +74,7 @@
                 <span class="kt-menu__link-text">Quốc gia</span></a>
             </li>
 
-            <li class="kt-menu__item @if (Str::contains(url()->current(), '/sizes')) kt-menu__item--active @endif" aria-haspopup="true">
+            <li class="kt-menu__item @if (Str::contains(url()->current(), '/brands')) kt-menu__item--active @endif" aria-haspopup="true">
                 <a href="{{ route("manager.brands") }}" class="kt-menu__link "><span class="kt-menu__link-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -84,6 +84,39 @@
                 </svg>
             </span>
                 <span class="kt-menu__link-text">Nhãn hiệu</span></a>
+            </li>
+
+            <li class="kt-menu__item @if (Str::contains(url()->current(), '/products')) kt-menu__item--active @endif" aria-haspopup="true">
+                <a href="{{ route("manager.products") }}" class="kt-menu__link "><span class="kt-menu__link-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <rect x="0" y="0" width="24" height="24"/>
+                            <path d="M8,18 L8,22 C8,22.5522847 8.44771525,23 9,23 L15,23 C15.5522847,23 16,22.5522847 16,22 L16,10.4142136 C16,10.1489971 15.8946432,9.89464316 15.7071068,9.70710678 L14.2928932,8.29289322 C14.1053568,8.10535684 14,7.85100293 14,7.58578644 L14,5 C14,4.44771525 13.5522847,4 13,4 L11,4 C10.4477153,4 10,4.44771525 10,5 L10,7.58578644 C10,7.85100293 9.89464316,8.10535684 9.70710678,8.29289322 L8.29289322,9.70710678 C8.10535684,9.89464316 8,10.1489971 8,10.4142136 L8,13 L12,13 L12,18 L8,18 Z" fill="#000000"/>
+                            <rect fill="#000000" opacity="0.3" x="10" y="1" width="4" height="2" rx="1"/>
+                        </g>
+                    </svg>
+            </span>
+                <span class="kt-menu__link-text">Sản phẩm</span></a>
+            </li>
+
+
+            <li class="kt-menu__item @if (Str::contains(url()->current(), '/activities')) kt-menu__item--active @endif" aria-haspopup="true">
+                <a href="{{ route("manager.activities") }}" class="kt-menu__link "><span class="kt-menu__link-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1" class="kt-svg-icon">
+                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <rect x="0" y="0" width="24" height="24"/>
+                            <path d="M8,3 L8,3.5 C8,4.32842712 8.67157288,5 9.5,5 L14.5,5 C15.3284271,5 16,4.32842712 16,3.5 L16,3 L18,3 C19.1045695,3 20,3.8954305 20,5 L20,21 C20,22.1045695 19.1045695,23 18,23 L6,23 C4.8954305,23 4,22.1045695 4,21 L4,5 C4,3.8954305 4.8954305,3 6,3 L8,3 Z" fill="#000000" opacity="0.3"/>
+                            <path d="M11,2 C11,1.44771525 11.4477153,1 12,1 C12.5522847,1 13,1.44771525 13,2 L14.5,2 C14.7761424,2 15,2.22385763 15,2.5 L15,3.5 C15,3.77614237 14.7761424,4 14.5,4 L9.5,4 C9.22385763,4 9,3.77614237 9,3.5 L9,2.5 C9,2.22385763 9.22385763,2 9.5,2 L11,2 Z" fill="#000000"/>
+                            <rect fill="#000000" opacity="0.3" x="10" y="9" width="7" height="2" rx="1"/>
+                            <rect fill="#000000" opacity="0.3" x="7" y="9" width="2" height="2" rx="1"/>
+                            <rect fill="#000000" opacity="0.3" x="7" y="13" width="2" height="2" rx="1"/>
+                            <rect fill="#000000" opacity="0.3" x="10" y="13" width="7" height="2" rx="1"/>
+                            <rect fill="#000000" opacity="0.3" x="7" y="17" width="2" height="2" rx="1"/>
+                            <rect fill="#000000" opacity="0.3" x="10" y="17" width="7" height="2" rx="1"/>
+                        </g>
+                    </svg>
+            </span>
+                <span class="kt-menu__link-text">Nhật ký hoạt động</span></a>
             </li>
         </ul>
     </div>

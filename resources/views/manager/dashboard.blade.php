@@ -326,7 +326,7 @@
             <div class="kt-portlet__head">
                 <div class="kt-portlet__head-label">
                     <h3 class="kt-portlet__head-title">
-                        Hoạt động gần đây
+                    Hoạt động gần đây (<a href="{{ route("manager.activities") }}" class="text-mute">Xem tất cả</a>)
                     </h3>
                 </div>
             </div>
