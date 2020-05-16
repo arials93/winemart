@@ -2,117 +2,31 @@
 
 @section('content')
     
-    @include('store.layout.component.wrap-page')
+    @include('store.layout.component.wrap-page', ["page" => "Bài viết"])
 
     <section class="ftco-section">
         <div class="container">
           <div class="row d-flex">
+            @foreach ($blogs as $blog)
             <div class="col-lg-6 d-flex align-items-stretch ftco-animate">
-                <div class="blog-entry d-md-flex">
-                    <a href="blog-single.html" class="block-20 img" style="background-image: url('images/image_2.jpg');">
-                </a>
-                <div class="text p-4 bg-light">
-                    <div class="meta">
-                        <p><span class="fa fa-calendar"></span> 23 April 2020</p>
-                    </div>
-                  <h3 class="heading mb-3"><a href="#">The Recipe from a Winemaker’s Restaurent</a></h3>
-                  <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                  <a href="#" class="btn-custom">Continue <span class="fa fa-long-arrow-right"></span></a>
-  
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 d-flex align-items-stretch ftco-animate">
-                <div class="blog-entry d-md-flex">
-                    <a href="blog-single.html" class="block-20 img" style="background-image: url('images/image_1.jpg');">
-                </a>
-                <div class="text p-4 bg-light">
-                    <div class="meta">
-                        <p><span class="fa fa-calendar"></span> 23 April 2020</p>
-                    </div>
-                  <h3 class="heading mb-3"><a href="#">The Recipe from a Winemaker’s Restaurent</a></h3>
-                  <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                  <a href="#" class="btn-custom">Continue <span class="fa fa-long-arrow-right"></span></a>
-  
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 d-flex align-items-stretch ftco-animate">
-                <div class="blog-entry d-md-flex">
-                    <a href="blog-single.html" class="block-20 img" style="background-image: url('images/image_3.jpg');">
-                </a>
-                <div class="text p-4 bg-light">
-                    <div class="meta">
-                        <p><span class="fa fa-calendar"></span> 23 April 2020</p>
-                    </div>
-                  <h3 class="heading mb-3"><a href="#">The Recipe from a Winemaker’s Restaurent</a></h3>
-                  <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                  <a href="#" class="btn-custom">Continue <span class="fa fa-long-arrow-right"></span></a>
-  
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 d-flex align-items-stretch ftco-animate">
-                <div class="blog-entry d-md-flex">
-                    <a href="blog-single.html" class="block-20 img" style="background-image: url('images/image_4.jpg');">
-                </a>
-                <div class="text p-4 bg-light">
-                    <div class="meta">
-                        <p><span class="fa fa-calendar"></span> 23 April 2020</p>
-                    </div>
-                  <h3 class="heading mb-3"><a href="#">The Recipe from a Winemaker’s Restaurent</a></h3>
-                  <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                  <a href="#" class="btn-custom">Continue <span class="fa fa-long-arrow-right"></span></a>
-  
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 d-flex align-items-stretch ftco-animate">
-                <div class="blog-entry d-md-flex">
-                    <a href="blog-single.html" class="block-20 img" style="background-image: url('images/image_5.jpg');">
-                </a>
-                <div class="text p-4 bg-light">
-                    <div class="meta">
-                        <p><span class="fa fa-calendar"></span> 23 April 2020</p>
-                    </div>
-                  <h3 class="heading mb-3"><a href="#">The Recipe from a Winemaker’s Restaurent</a></h3>
-                  <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                  <a href="#" class="btn-custom">Continue <span class="fa fa-long-arrow-right"></span></a>
-  
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 d-flex align-items-stretch ftco-animate">
-                <div class="blog-entry d-md-flex">
-                    <a href="blog-single.html" class="block-20 img" style="background-image: url('images/image_6.jpg');">
-                </a>
-                <div class="text p-4 bg-light">
-                    <div class="meta">
-                        <p><span class="fa fa-calendar"></span> 23 April 2020</p>
-                    </div>
-                  <h3 class="heading mb-3"><a href="#">The Recipe from a Winemaker’s Restaurent</a></h3>
-                  <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                  <a href="#" class="btn-custom">Continue <span class="fa fa-long-arrow-right"></span></a>
-  
-                </div>
+              <div class="blog-entry d-md-flex">
+                  <a href="blog-single.html" class="block-20 img" style="background-image: url({{ Storage::url($blog->image) }});">
+              </a>
+              <div class="text p-4 bg-light">
+                  <div class="meta">
+                      <p><span class="fa fa-calendar"></span> {{ $blog->created_at->format('d-m-Y') }} </p>
+                  </div>
+                <h3 class="heading mb-3">
+                <a href="{{ route('store.blog', $blog->id) }}">{{ $blog->name }}</a></h3>
+                <p>{{ $blog->sub_des }}</p>
+                <a href="{{ route('store.blog', $blog->id) }}" class="btn-custom">Đọc thêm <span class="fa fa-long-arrow-right"></span></a>
+
               </div>
             </div>
           </div>
-          <div class="row mt-5">
-            <div class="col text-center">
-              <div class="block-27">
-                <ul>
-                  <li><a href="#">&lt;</a></li>
-                  <li class="active"><span>1</span></li>
-                  <li><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">4</a></li>
-                  <li><a href="#">5</a></li>
-                  <li><a href="#">&gt;</a></li>
-                </ul>
-              </div>
-            </div>
+            @endforeach
           </div>
+          {{ $blogs->links('vendor.pagination.store-paginate') }}
         </div>
     </section>	
 @endsection

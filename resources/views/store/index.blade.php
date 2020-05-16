@@ -97,45 +97,24 @@
     {{-- Các loại rượu mạnh --}}
     <section class="ftco-section ftco-no-pb">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-2 col-md-4 ">
-                    <div class="sort w-100 text-center ftco-animate">
-                        <div class="img" style="background-image: url(images/kind-1.jpg);"></div>
-                        <h3>Brandy</h3>
-                    </div>
+            @foreach ($categories as $cate)
+            <div class="row justify-content-center pb-5">
+                <div class="col-md-7 heading-section text-center ftco-animate">
+                    <h2>{{ $cate->name }}</h2>
                 </div>
-                <div class="col-lg-2 col-md-4 ">
-                    <div class="sort w-100 text-center ftco-animate">
-                        <div class="img" style="background-image: url(images/kind-2.jpg);"></div>
-                        <h3>Gin</h3>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 ">
-                    <div class="sort w-100 text-center ftco-animate">
-                        <div class="img" style="background-image: url(images/kind-3.jpg);"></div>
-                        <h3>Rum</h3>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 ">
-                    <div class="sort w-100 text-center ftco-animate">
-                        <div class="img" style="background-image: url(images/kind-4.jpg);"></div>
-                        <h3>Tequila</h3>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 ">
-                    <div class="sort w-100 text-center ftco-animate">
-                        <div class="img" style="background-image: url(images/kind-5.jpg);"></div>
-                        <h3>Vodka</h3>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 ">
-                    <div class="sort w-100 text-center ftco-animate">
-                        <div class="img" style="background-image: url(images/kind-6.jpg);"></div>
-                        <h3>Whiskey</h3>
-                    </div>
-                </div>
-
             </div>
+            <div class="row pb-5">
+                @foreach ($cate->subcates as $item)
+                <div class="col-lg-2 col-md-4">
+                    <div class="sort w-100 text-center ftco-animate">
+                        <div class="img" style="background-image: url({{ Storage::url($item->image) }});"></div>
+                        <h3>{{ $item->name }}</h3>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            @endforeach
+            
         </div>
     </section>
 
@@ -353,7 +332,7 @@
             <div class="row ftco-animate">
                 <div class="col-md-12">
                     <div class="carousel-testimony owl-carousel ftco-owl">
-                        @for ($i = 0; $i < 6; $i++)
+                        @foreach ($brands as $brand)
                         <div class="item">
                             <div class="testimony-wrap py-4">
                                 <div class="icon d-flex align-items-center justify-content-center"><span
@@ -361,16 +340,15 @@
                                 <div class="text">
                                     
                                     <div class="d-flex align-items-center">
-                                        <div class="user-img" style="background-image: url(images/person_1.jpg)"></div>
+                                        <div class="user-img" style="background-image: url({{ Storage::url($brand->image) }})"></div>
                                         <div class="pl-3">
-                                            <p class="name">Roger Scott</p>
-                                            <span class="position">Marketing Manager</span>
+                                            <p class="name">{{$brand->name}}</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        @endfor                       
+                        @endforeach                     
                     </div>
                 </div>
             </div>
@@ -588,7 +566,7 @@
                 </div>
             </div>
             <div class="row d-flex">
-                @for ($i = 0; $i < 4; $i++)
+                @foreach ($blogs as $blog)
                 <div class="col-lg-6 d-flex align-items-stretch ftco-animate">
                     <div class="blog-entry d-flex">
                         <a href="blog-single.html" class="block-20 img"
@@ -596,19 +574,17 @@
                         </a>
                         <div class="text p-4 bg-light">
                             <div class="meta">
-                                <p><span class="fa fa-calendar"></span> 23 April 2020</p>
+                            <p><span class="fa fa-calendar"></span>{{ $blog->created_at->format('d-m-Y') }}</p>
                             </div>
-                            <h3 class="heading mb-3"><a href="#">The Recipe from a Winemaker’s Restaurent</a></h3>
-                            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.
+                        <h3 class="heading mb-3"><a href="{{ route('store.', $blog->id) }}">{{ $blog->name }}</a></h3>
+                            <p>{{ $blog->sub_des }}
                             </p>
-                            <a href="#" class="btn-custom">Continue <span class="fa fa-long-arrow-right"></span></a>
+                            <a href="{{ route('store.blogs', $blog->id) }}" class="btn-custom">Đọc thêm <span class="fa fa-long-arrow-right"></span></a>
 
                         </div>
                     </div>
                 </div>
-                @endfor
-                
-                
+                @endforeach
             </div>
         </div>
     </section>

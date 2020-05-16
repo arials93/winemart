@@ -2,7 +2,7 @@
 
 @section('content')
 
-    @include('store.layout.component.wrap-page')
+    @include('store.layout.component.wrap-page', ['page' => 'Bài viết'])
 
     <section class="ftco-section ftco-degree-bg">
         <div class="container">

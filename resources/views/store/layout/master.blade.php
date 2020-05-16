@@ -140,9 +140,9 @@
                             </div>
                         </li>
                     @endforeach
-                    <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-                    <li class="nav-item"><a href="{{ asset('/about') }}" class="nav-link">Giới thiệu</a></li>
-                    <li class="nav-item"><a href="{{ asset('/contact') }}" class="nav-link">Liên hệ</a></li>
+                    <li class="nav-item"><a href="{{ route('store.blogs') }}" class="nav-link">Blog</a></li>
+                    <li class="nav-item"><a href="{{ route('store.about') }}" class="nav-link">Giới thiệu</a></li>
+                    <li class="nav-item"><a href="{{ route('store.contact') }}" class="nav-link">Liên hệ</a></li>
                 </ul>
             </div>
         </div>
