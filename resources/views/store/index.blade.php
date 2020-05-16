@@ -138,7 +138,7 @@
                                                 class="flaticon-shopping-bag"></span></a>
                                         <a href="#" class="d-flex align-items-center justify-content-center"><span
                                                 class="flaticon-heart"></span></a>
-                                        <a href="#" class="d-flex align-items-center justify-content-center"><span
+                                        <a href="{{ route('store.product', $item->id) }}" class="d-flex align-items-center justify-content-center"><span
                                                 class="flaticon-visibility"></span></a>
                                     </p>
                                 </div>
@@ -234,10 +234,10 @@
                             <div class="meta">
                             <p><span class="fa fa-calendar"></span>{{ $blog->created_at->format('d-m-Y') }}</p>
                             </div>
-                        <h3 class="heading mb-3"><a href="{{ route('store.', $blog->id) }}">{{ $blog->name }}</a></h3>
+                        <h3 class="heading mb-3"><a href="{{ route('store.blog', $blog->id) }}">{{ $blog->name }}</a></h3>
                             <p>{{ $blog->sub_des }}
                             </p>
-                            <a href="{{ route('store.blogs', $blog->id) }}" class="btn-custom">Đọc thêm <span class="fa fa-long-arrow-right"></span></a>
+                            <a href="{{ route('store.blog', $blog->id) }}" class="btn-custom">Đọc thêm <span class="fa fa-long-arrow-right"></span></a>
 
                         </div>
                     </div>

@@ -59,8 +59,10 @@ class ProductController extends Controller
         $data['products'] = $products;
         return view('store.products', $data);
     }
-    public function product()
+
+    public function product($id)
     {
-        return view('store.product');
+        $product = Product::findOrFail($id);
+        return view('store.product', ['product' => $product]);
     }
 }

@@ -35,7 +35,7 @@
                                                     class="flaticon-shopping-bag"></span></a>
                                             <a href="#" class="d-flex align-items-center justify-content-center"><span
                                                     class="flaticon-heart"></span></a>
-                                            <a href="#" class="d-flex align-items-center justify-content-center"><span
+                                            <a href="{{ route('store.product', $item->id) }}" class="d-flex align-items-center justify-content-center"><span
                                                     class="flaticon-visibility"></span></a>
                                         </p>
                                     </div>
