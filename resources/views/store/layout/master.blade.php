@@ -129,20 +129,27 @@
                     
                     @foreach ($menu_cates as $cate)
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="{{ route('store.products', $cate->id) }}" id="dropdown04" data-toggle="dropdown"
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">{{$cate->name}}</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown04">
                                 @foreach ($cate->subcates as $subcate)
                                     <a class="dropdown-item" href="{{ route('store.products', $subcate->id) }}">{{$subcate->name}}</a>
                                 @endforeach
-                                {{-- <a class="dropdown-item" href="product.html">Products</a> --}}
-                                
+                                                               
                             </div>
                         </li>
                     @endforeach
-                    <li class="nav-item"><a href="{{ route('store.blogs') }}" class="nav-link">Blog</a></li>
-                    <li class="nav-item"><a href="{{ route('store.about') }}" class="nav-link">Giới thiệu</a></li>
-                    <li class="nav-item"><a href="{{ route('store.contact') }}" class="nav-link">Liên hệ</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{{ route('store.blogs', ['id' => 0]) }}" id="dropdown04" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">Bài viết</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown04">
+                            @foreach ($menu_blogs as $blog)
+                                <a class="dropdown-item" href="{{ route('store.blogs', $blog->id) }}">{{$blog->name}}</a>
+                            @endforeach                        
+                        </div>
+                    </li>
+                    <li class="nav-item"><a href="{{ asset('/about') }}" class="nav-link">Giới thiệu</a></li>
+                    <li class="nav-item"><a href="{{ asset('/contact') }}" class="nav-link">Liên hệ</a></li>
                 </ul>
             </div>
         </div>
@@ -194,13 +201,6 @@
                                 </a></li>
                                 <li><a href="{{ asset('login') }}"><span class="fa fa-chevron-right mr-2"></span>Đăng nhập</a></li>
                             @endif
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md">
-                    <div class="ftco-footer-widget mb-4 ml-md-4">
-                        <h2 class="ftco-heading-2">Thông tin</h2>
-                        <ul class="list-unstyled">
                             <li><a href="{{ asset('/about') }}"><span class="fa fa-chevron-right mr-2"></span>Về chúng tôi</a></li>
                             <li><a href="{{ asset('/contact') }}"><span class="fa fa-chevron-right mr-2"></span>Liên hệ</a></li>
                             <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Chính sách giao hàng</a></li>
@@ -208,15 +208,21 @@
                         </ul>
                     </div>
                 </div>
+                @foreach ($menu_cates as $cate)
                 <div class="col-sm-12 col-md">
-                    <div class="ftco-footer-widget mb-4">
-                        <h2 class="ftco-heading-2">Rượu</h2>
+                    <div class="ftco-footer-widget mb-4 ml-md-4">
+                        <h2 class="ftco-heading-2"> {{$cate->name}} </h2>
                         <ul class="list-unstyled">
-                            <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Rượu vang</a></li>
-                            <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Rượu mạnh</a></li>
+                            @foreach ($cate->subcates as $item)
+                             <li>
+                                 <a href="{{ route('store.products',$item->id) }}">
+                                <span class="fa fa-chevron-right mr-2"></span> {{$item->name}} </a>
+                            </li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
+                @endforeach
                 <div class="col-sm-12 col-md">
                     <div class="ftco-footer-widget mb-4">
                         <h2 class="ftco-heading-2">Cửa hàng</h2>

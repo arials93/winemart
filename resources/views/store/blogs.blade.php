@@ -10,11 +10,11 @@
             @foreach ($blogs as $blog)
             <div class="col-lg-6 d-flex align-items-stretch ftco-animate">
               <div class="blog-entry d-md-flex">
-                  <a href="blog-single.html" class="block-20 img" style="background-image: url({{ Storage::url($blog->image) }});">
+                  <a href="{{ route('store.blog', $blog->id) }}" class="block-20 img" style="background-image: url({{ Storage::url($blog->image) }});">
               </a>
               <div class="text p-4 bg-light">
                   <div class="meta">
-                      <p><span class="fa fa-calendar"></span> {{ $blog->created_at->format('d-m-Y') }} </p>
+                      <p><span class="fa fa-calendar"></span> {{ $blog->created_at->format('d/m/Y') }} </p>
                   </div>
                 <h3 class="heading mb-3">
                 <a href="{{ route('store.blog', $blog->id) }}">{{ $blog->name }}</a></h3>
@@ -28,5 +28,6 @@
           </div>
           {{ $blogs->links('vendor.pagination.store-paginate') }}
         </div>
-    </section>	
+    </div>
+</section>
 @endsection

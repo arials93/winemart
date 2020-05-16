@@ -13,10 +13,10 @@
 
 Route::namespace('Store')->name('store.')->group(function () {
     Route::get('/', 'StoreController@index');
-    Route::get('products', 'ProductController@index')->name('products');
-    Route::get('products/{id}', 'ProductController@product')->name('product');
-    Route::get('blogs', 'BlogController@index')->name('blogs');
-    Route::get('blogs/{id}', 'BlogController@blog')->name('blog');
+    Route::get('/products', 'ProductController@index')->name('products');
+    Route::get('/products/{id}', 'ProductController@product')->name('product');
+    Route::get('/blogs/{id}', 'BlogController@index')->name('blogs');
+    Route::get('/blog/{id}', 'BlogController@blog')->name('blog');
 
     Route::get('cart', 'CartController@index')->name('cart');
     Route::get('checkout', 'CartController@checkout')->name('checkout');

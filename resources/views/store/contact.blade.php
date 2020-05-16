@@ -2,7 +2,7 @@
 
 @section('content')
 
-@include('store.layout.component.wrap-page')
+@include('store.layout.component.wrap-page',['page' => 'Liên hệ'])
 
 <section class="ftco-section bg-light">
     <div class="container">

@@ -569,7 +569,7 @@
                 @foreach ($blogs as $blog)
                 <div class="col-lg-6 d-flex align-items-stretch ftco-animate">
                     <div class="blog-entry d-flex">
-                        <a href="blog-single.html" class="block-20 img"
+                        <a href="#" class="block-20 img"
                             style="background-image: url('images/image_1.jpg');">
                         </a>
                         <div class="text p-4 bg-light">

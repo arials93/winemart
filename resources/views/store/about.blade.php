@@ -2,7 +2,7 @@
 
 @section('content')
 
-    @include('store.layout.component.wrap-page')
+    @include('store.layout.component.wrap-page',['page' => 'Giới thiệu'])
 
     {{-- Chính sách công ty --}}
     <section class="ftco-intro">
