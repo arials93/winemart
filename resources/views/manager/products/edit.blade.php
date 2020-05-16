@@ -127,7 +127,7 @@
                                         <span></span>
                                     </label>
                                     <label class="kt-radio kt-radio--bold kt-radio--brand">
-                                        <input type="radio" value="false" @if ($product->bestseller) checked @endif name="bestseller">
+                                        <input type="radio" value="false" @if (!$product->bestseller) checked @endif name="bestseller">
                                         Sản phẩm thường
                                         <span></span>
                                     </label>
