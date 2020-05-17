@@ -98,21 +98,26 @@
     <section class="ftco-section ftco-no-pb">
         <div class="container">
             @foreach ($categories as $cate)
-            <div class="row justify-content-center pb-5">
-                <div class="col-md-7 heading-section text-center ftco-animate">
-                    <h2>{{ $cate->name }}</h2>
-                </div>
-            </div>
-            <div class="row pb-5">
-                @foreach ($cate->subcates as $item)
-                <div class="col-lg-2 col-md-4">
-                    <div class="sort w-100 text-center ftco-animate">
-                        <div class="img" style="background-image: url({{ Storage::url($item->image) }});"></div>
-                        <h3>{{ $item->name }}</h3>
+            @if ($cate->id == 2)
+                <div class="row justify-content-center pb-5">
+                    <div class="col-md-7 heading-section text-center ftco-animate">
+                        <h2>{{ $cate->name }}</h2>
                     </div>
                 </div>
-                @endforeach
-            </div>
+                <div class="row pb-5">
+                    @foreach ($cate->subcates as $item)
+                    <div class="col-lg-2 col-md-4">
+                        <div class="sort w-100 text-center ftco-animate">
+                            <a href="#">
+                                <div class="img" style="background-image: url({{ Storage::url($item->image) }});"></div>
+                            </a>
+                            <h3>{{ $item->name }}</h3>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            @endif
+            
             @endforeach
             
         </div>
@@ -227,8 +232,8 @@
                 @foreach ($blogs as $blog)
                 <div class="col-lg-6 d-flex align-items-stretch ftco-animate">
                     <div class="blog-entry d-flex">
-                        <a href="#" class="block-20 img"
-                            style="background-image: url('images/image_1.jpg');">
+                        <a href=" {{ route('store.blog', $blog->id) }} " class="block-20 img"
+                        style="background-image: url('{{Storage::url($blog->image)}}');">
                         </a>
                         <div class="text p-4 bg-light">
                             <div class="meta">

@@ -6,7 +6,7 @@
 
 @section('content')
 
-    @include('store.layout.component.wrap-page')
+    @include('store.layout.component.wrap-page',['page' => 'Thanh toán'])
 
     <section class="ftco-section">
         <div class="container">

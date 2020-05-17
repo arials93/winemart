@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\ManagerCreateBlog;
 use App\Http\Requests\ManagerUpdateBlog;
+use Illuminate\Support\Facades\Storage;
 use App\BlogCategory;
 use App\Blog;
 

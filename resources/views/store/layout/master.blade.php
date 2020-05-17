@@ -140,7 +140,7 @@
                         </li>
                     @endforeach
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="{{ route('store.blogs', ['id' => 0]) }}" id="dropdown04" data-toggle="dropdown"
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Bài viết</a>
                         <div class="dropdown-menu" aria-labelledby="dropdown04">
                             @foreach ($menu_blogs as $blog)
