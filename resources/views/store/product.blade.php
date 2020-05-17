@@ -53,7 +53,7 @@
                             <p style="color: #000;">Còn {{ $product->instock }} sản phẩm</p>
                         </div>
                     </div>
-                    <p><a href="cart.html" class="btn btn-primary py-3 px-5 mr-2">Add to Cart</a></p>
+                    <p class="product"><a href="#" data-product-id="{{ $item->id }}" class="add-to-cart btn btn-primary py-3 px-5 mr-2">Thêm vào giỏ hàng</a></p>
                 </div>
             </div>
         </div>

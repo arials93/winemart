@@ -5,6 +5,7 @@
     <base href="/store/">
     <title>Liquor Store - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,700;0,800;1,200;1,300;1,400;1,500;1,700&display=swap"
@@ -84,37 +85,9 @@
                 <a href="#" class="btn-cart dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     <span class="flaticon-shopping-bag"></span>
-                    <div class="d-flex justify-content-center align-items-center"><small>3</small></div>
+                    <div class="d-flex justify-content-center align-items-center"><small id="cart-count">0</small></div>
                 </a>
-                <div class="dropdown-menu dropdown-menu-right">
-                    <div class="dropdown-item d-flex align-items-start" href="#">
-                        <div class="img" style="background-image: url(images/prod-1.jpg);"></div>
-                        <div class="text pl-3">
-                            <h4>Bacardi 151</h4>
-                            <p class="mb-0"><a href="#" class="price">$25.99</a><span class="quantity ml-3">Quantity:
-                                    01</span></p>
-                        </div>
-                    </div>
-                    <div class="dropdown-item d-flex align-items-start" href="#">
-                        <div class="img" style="background-image: url(images/prod-2.jpg);"></div>
-                        <div class="text pl-3">
-                            <h4>Jim Beam Kentucky Straight</h4>
-                            <p class="mb-0"><a href="#" class="price">$30.89</a><span class="quantity ml-3">Quantity:
-                                    02</span></p>
-                        </div>
-                    </div>
-                    <div class="dropdown-item d-flex align-items-start" href="#">
-                        <div class="img" style="background-image: url(images/prod-3.jpg);"></div>
-                        <div class="text pl-3">
-                            <h4>Citadelle</h4>
-                            <p class="mb-0"><a href="#" class="price">$22.50</a><span class="quantity ml-3">Quantity:
-                                    01</span></p>
-                        </div>
-                    </div>
-                    <a class="dropdown-item text-center btn-link d-block w-100" href="cart.html">
-                        View All
-                        <span class="ion-ios-arrow-round-forward"></span>
-                    </a>
+                <div id="cart-icon" class="dropdown-menu dropdown-menu-right">
                 </div>
             </div>
 
@@ -125,7 +98,7 @@
 
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active"><a href="/" class="nav-link">Trang chủ</a></li>
+                    <li class="nav-item"><a href="/" class="nav-link">Trang chủ</a></li>
                     
                     @foreach ($menu_cates as $cate)
                         <li class="nav-item dropdown">
@@ -133,7 +106,7 @@
                             aria-haspopup="true" aria-expanded="false">{{$cate->name}}</a>
                             <div class="dropdown-menu" aria-labelledby="dropdown04">
                                 @foreach ($cate->subcates as $subcate)
-                                    <a class="dropdown-item" href="{{ route('store.products', $subcate->id) }}">{{$subcate->name}}</a>
+                                    <a class="dropdown-item" href="{{ route('store.category.products', $subcate->id) }}">{{$subcate->name}}</a>
                                 @endforeach
                                                                
                             </div>
@@ -276,6 +249,60 @@
     <script src="js/jquery.animateNumber.min.js"></script>
     <script src="js/scrollax.min.js"></script>
     <script src="js/main.js"></script>
+
+    <script>
+    $(document).ready(function(){
+        $.ajaxSetup({
+            headers:
+            { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+        });
+        function get_cart() {
+            $.ajax({
+                method: "GET",
+                url: "/cart",
+            }).done(function(data) {
+                var count = Object.keys(data).length;
+                $('#cart-count').html(count);
+                $('#cart-icon').html(`
+                    <a class="dropdown-item text-center btn-link d-block w-100" href="{{ route('store.cart') }}">
+                        Xem toàn bộ
+                        <span class="ion-ios-arrow-round-forward"></span>
+                    </a>
+                `);
+                for(var item in data) {
+                    var item_data = data[item];
+                    var price = item_data.price.toLocaleString();
+                    var sale = item_data.associatedModel.sale ? item_data.associatedModel.sale + ' %' : '';
+                    var cart_template = `<div class="dropdown-item d-flex align-items-start" href="#">
+                        <div class="img" style="background-image: url(/storage/${item_data.associatedModel.image});"></div>
+                        <div class="text pl-3">
+                            <h4>${item_data.name} <span class="text-muted">${sale}</span></h4>
+                            <p class="mb-0">
+                                <a href="#" class="price">${price} VND</a>
+                                <span class="quantity ml-3">Quantity: ${item_data.quantity}</span>
+                            </p>
+                        </div>
+                    </div>`;
+
+                    $('#cart-icon').prepend(cart_template);
+                }
+            });
+        }
+
+        get_cart();
+
+        $('.product').delegate('.add-to-cart', 'click', function() {
+            var target = $(this);
+            var product_id = target.attr('data-product-id');
+            $.ajax({
+                method: "POST",
+                url: "/cart/add/" + product_id,
+            }).done(function() {
+                get_cart();
+            });
+        });
+    });
+    </script>
     @stack('scripts')
 </body>
 

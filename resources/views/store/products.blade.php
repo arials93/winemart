@@ -31,9 +31,9 @@
                                     style="background-image: url({{ Storage::url($item->image) }});">
                                     <div class="desc">
                                         <p class="meta-prod d-flex">
-                                            <a href="#" class="d-flex align-items-center justify-content-center"><span
+                                            <a data-product-id="{{ $item->id }}" class="add-to-cart d-flex align-items-center justify-content-center"><span
                                                     class="flaticon-shopping-bag"></span></a>
-                                            <a href="#" class="d-flex align-items-center justify-content-center"><span
+                                            <a class="d-flex align-items-center justify-content-center"><span
                                                     class="flaticon-heart"></span></a>
                                             <a href="{{ route('store.product', $item->id) }}" class="d-flex align-items-center justify-content-center"><span
                                                     class="flaticon-visibility"></span></a>
@@ -72,14 +72,15 @@
                 <div class="col-md-3">
 					<div class="sidebar-box ftco-animate">
 						<form class="categories" method="GET">
-							<h3>Tìm kiếm sản phẩm</h3>
-                            <select name="category" class="selectpicker mb-4">
-                                <option value="0">Chọn loại sản phẩm</option>
-                                @foreach ($subcates as $item)
-                                <option {{ request()->category == $item->id ? 'selected' : '' }} value="{{$item->id}}">{{$item->name}}</option>
-                                @endforeach
-                            </select>
-
+                            <h3>Tìm kiếm sản phẩm</h3>
+                            @if (!request()->route('cate_id'))
+                                <select name="category" class="selectpicker mb-4">
+                                    <option value="0">Chọn loại sản phẩm</option>
+                                    @foreach ($subcates as $item)
+                                    <option {{ request()->category == $item->id ? 'selected' : '' }} value="{{$item->id}}">{{$item->name}}</option>
+                                    @endforeach
+                                </select>
+                            @endif
                             <select name="country" class="selectpicker mb-4">
                                 <option value="0">Chọn quốc gia</option>
                                 @foreach ($countries as $item)

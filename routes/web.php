@@ -12,11 +12,12 @@
 */
 
 Route::namespace('Store')->name('store.')->group(function () {
-    Route::get('/', 'StoreController@index');
-    Route::get('/products', 'ProductController@index')->name('products');
-    Route::get('/products/{id}', 'ProductController@product')->name('product');
-    Route::get('/blogs/{id}', 'BlogController@index')->name('blogs');
-    Route::get('/blog/{id}', 'BlogController@blog')->name('blog');
+    Route::get('/', 'StoreController@index')->name('home');
+    Route::get('products', 'ProductController@index')->name('products');
+    Route::get('category/{cate_id}/products', 'ProductController@index')->name('category.products');
+    Route::get('products/{id}', 'ProductController@product')->name('product');
+    Route::get('blogs', 'BlogController@index')->name('blogs');
+    Route::get('blogs/{id}', 'BlogController@blog')->name('blog');
 
     Route::get('cart', 'CartController@index')->name('cart');
     Route::get('checkout', 'CartController@checkout')->name('checkout');
@@ -28,6 +29,13 @@ Route::namespace('Store')->name('store.')->group(function () {
         Route::view('info', 'store.account.info-user')->name('info');
         Route::get('edit', 'UserController@edit')->name('edit');
         Route::post('update', 'UserController@update')->name('update');
+    });
+
+    Route::prefix('cart')->name('cart.')->group(function () {
+        Route::get('cart', 'CartController@index')->name('index');
+        Route::post('add/{product_id}', 'CartController@add')->name('add');
+        Route::post('update/{row_id}', 'CartController@update')->name('update');
+        Route::post('delete/{row_id}', 'CartController@delete')->name('delete');
     });
     
 });

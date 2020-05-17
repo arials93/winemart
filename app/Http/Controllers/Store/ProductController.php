@@ -8,7 +8,7 @@ use App\Product;
 
 class ProductController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request, $cate_id = null)
     {
         $subcates = \App\SubCategory::all();
         $brands = \App\Brand::all();
@@ -30,6 +30,13 @@ class ProductController extends Controller
                 'subcate_id', '=', $request->category
             ]);
         }
+        
+        if ($cate_id) {
+            array_push($search_data, [
+                'subcate_id', '=', $cate_id
+            ]);
+        }
+
         if($request->country) {
             array_push($search_data, [
                 'country_id', '=', $request->country
