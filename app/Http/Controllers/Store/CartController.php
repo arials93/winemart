@@ -4,21 +4,25 @@ namespace App\Http\Controllers\Store;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\OrderRequest;
 use App\Product;
+use App\Order;
+use App\DetailOrder;
 use Cart;
+use Auth;
 
 
 class CartController extends Controller
 {
     public function index()
     {
-        // Cart::clear();
         $cart = Cart::getContent();
-        if(request()->ajax()) {
-            return response()->json($cart);
-        }
-
         return view('store.cart', ['data' => $cart]);
+    }
+
+    public function ajax_index() {
+        $cart = Cart::getContent();
+        return response()->json($cart);
     }
 
     public function add($product_id)
@@ -62,6 +66,38 @@ class CartController extends Controller
 
     public function checkout()
     {
+        if(Cart::isEmpty()) {
+            // nếu giỏ hàng không có gì thì sẽ không được thanh toán
+            abort(404);
+        }
         return view('store.checkout');
+    }
+
+    public function order(OrderRequest $request)
+    {
+        $data = $request->all();
+        $data['total'] = Cart::getTotal();
+        if(Auth::check()) {
+            $data['user_id'] = Auth::user()->id;
+        }
+        $order = Order::create($data);
+        $cart = Cart::getContent();
+        foreach($cart as $item) {
+            DetailOrder::create([
+                'quality' => $item->quantity,
+                'price' => $item->price,
+                'sale' => $item->associatedModel->sale,
+                'total' => $item->quantity * $item->price,
+                'order_id' => $order->id,
+                'product_id' => $item->associatedModel->id,
+            ]);
+        }
+        Cart::clear();
+        return redirect()->route('store.cart.order-complete');
+    }
+
+    public function order_complete()
+    {
+        return view('store.order_complete');
     }
 }

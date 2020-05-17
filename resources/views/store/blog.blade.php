@@ -1,5 +1,13 @@
 @extends('store.layout.master')
 
+@push('styles')
+<style>
+   #blog_content img {
+     width: 100% !important;
+   }
+</style>   
+@endpush
+
 @section('content')
 
     @include('store.layout.component.wrap-page', ['page' => 'Bài viết'])
@@ -12,9 +20,9 @@
                 <img src="{{ asset('storage/'.$blog->image) }}" alt="" class="img-fluid">
               </p>
               <h2 class="mb-3">{{$blog->name}}</h2>
-              <p>
-                {{$blog->sub_des}}
-              </p>             
+              <div id="blog_content">
+                {!! $blog->description !!}
+              </div>             
               <div class="tag-widget post-tag-container mb-5 mt-5">
                 <div class="tagcloud">
                   <a href="{{ route('store.blogs', $blog->cateblog_id) }}" class="tag-cloud-link">{{$blog->blog_category->name}}</a>

@@ -7,6 +7,11 @@
     'btn_text' => 'Thêm bài viết'])
 @endsection
 
+@push('styles')
+<link href="assets/plugins/general/summernote/dist/summernote.css" rel="stylesheet" type="text/css" />   
+@endpush
+
+
 @section('content')
 @if (session('msg'))
     <div class="alert alert-success">
@@ -69,7 +74,7 @@
                             <label class="col-lg-3 col-form-label">Nội dung bài viết:</label>
                             <div class="col-lg-6">
 
-                                <textarea type="text" name="description" class="form-control"
+                                <textarea type="text" name="description" class="form-control summernote"
                                     placeholder="Nhập nội dung">{!! old('description') ?? $blog->description !!}</textarea>
                                 <span class="form-text @error('description') text-danger @enderror">
                                     @error('description') {{ $message }} @else {{ 'Vui lòng nhập nội dung' }}
@@ -115,7 +120,12 @@
 @endsection
 
 @push('scripts')
-    <script>
-        review_img();
-    </script>
+<script src="assets/plugins/general/summernote/dist/summernote.js" type="text/javascript"></script>
+<script>
+    review_img();
+
+    $('.summernote').summernote({
+        height: 150
+    });
+</script>
 @endpush

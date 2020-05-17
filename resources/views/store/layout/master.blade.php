@@ -251,44 +251,45 @@
     <script src="js/main.js"></script>
 
     <script>
+    // bỏ ngoài document ready để dùng function này ở mức global
+    function get_cart() {
+        $.ajax({
+            method: "GET",
+            url: "/cart/ajax",
+        }).done(function(data) {
+            var count = Object.keys(data).length;
+            $('#cart-count').html(count);
+            $('#cart-icon').html(`
+                <a class="dropdown-item text-center btn-link d-block w-100" href="{{ route('store.cart') }}">
+                    Xem toàn bộ
+                    <span class="ion-ios-arrow-round-forward"></span>
+                </a>
+            `);
+            for(var item in data) {
+                var item_data = data[item];
+                var price = item_data.price.toLocaleString();
+                var sale = item_data.associatedModel.sale ? item_data.associatedModel.sale + ' %' : '';
+                var cart_template = `<div class="dropdown-item d-flex align-items-start" href="#">
+                    <div class="img" style="background-image: url(/storage/${item_data.associatedModel.image});"></div>
+                    <div class="text pl-3">
+                        <h4>${item_data.name} <span class="text-muted">${sale}</span></h4>
+                        <p class="mb-0">
+                            <a href="#" class="price">${price} VND</a>
+                            <span class="quantity ml-3">Quantity: ${item_data.quantity}</span>
+                        </p>
+                    </div>
+                </div>`;
+
+                $('#cart-icon').prepend(cart_template);
+            }
+        });
+    }
+
     $(document).ready(function(){
         $.ajaxSetup({
             headers:
             { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
         });
-        function get_cart() {
-            $.ajax({
-                method: "GET",
-                url: "/cart",
-            }).done(function(data) {
-                var count = Object.keys(data).length;
-                $('#cart-count').html(count);
-                $('#cart-icon').html(`
-                    <a class="dropdown-item text-center btn-link d-block w-100" href="{{ route('store.cart') }}">
-                        Xem toàn bộ
-                        <span class="ion-ios-arrow-round-forward"></span>
-                    </a>
-                `);
-                for(var item in data) {
-                    var item_data = data[item];
-                    var price = item_data.price.toLocaleString();
-                    var sale = item_data.associatedModel.sale ? item_data.associatedModel.sale + ' %' : '';
-                    var cart_template = `<div class="dropdown-item d-flex align-items-start" href="#">
-                        <div class="img" style="background-image: url(/storage/${item_data.associatedModel.image});"></div>
-                        <div class="text pl-3">
-                            <h4>${item_data.name} <span class="text-muted">${sale}</span></h4>
-                            <p class="mb-0">
-                                <a href="#" class="price">${price} VND</a>
-                                <span class="quantity ml-3">Quantity: ${item_data.quantity}</span>
-                            </p>
-                        </div>
-                    </div>`;
-
-                    $('#cart-icon').prepend(cart_template);
-                }
-            });
-        }
-
         get_cart();
 
         $('.product').delegate('.add-to-cart', 'click', function() {

@@ -90,6 +90,7 @@
 			url: "/cart/delete/" + row_id,
 		}).done(function(res) {
 			$('#cart-total').html(res.total.toLocaleString() + ' VND');
+            get_cart();
 		});
 	});
 
@@ -104,7 +105,8 @@
 				data: {'quantity': parseInt(quantity)},
 			}).done(function(res) {
 				$('#cart-total').html(res.total.toLocaleString() + ' VND');
-				$('#product_cart_' + row_id).html(res.product_total.toLocaleString() + ' VND')
+				$('#product_cart_' + row_id).html(res.product_total.toLocaleString() + ' VND');
+                get_cart();
 			});
 		}
 	});

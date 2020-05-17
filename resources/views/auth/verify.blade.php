@@ -2,7 +2,7 @@
 
 @section('content')
 
-@include('store.layout.component.wrap-page')
+@include('store.layout.component.wrap-page', ['page' => 'Xác nhận tài khoản'])
 
 <section class="ftco-section bg-light">
     <div class="container">
