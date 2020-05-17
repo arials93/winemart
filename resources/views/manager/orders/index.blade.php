@@ -24,7 +24,7 @@
                     <a href="{{route('manager.orders', 'new')}}" class="btn btn-outline-brand btn-square @if (Str::contains(url()->current(), '/new')) active @endif">Đơn hàng chờ xác nhận</a>
                     <a href="{{route('manager.orders', 'confirmed')}}" class="btn btn-outline-brand btn-square @if (Str::contains(url()->current(), '/confirmed')) active @endif">Đơn hàng đã xác nhận</a>
                     <a href="{{route('manager.orders', 'delivery')}}" class="btn btn-outline-brand btn-square @if (Str::contains(url()->current(), '/delivery')) active @endif">Đơn hàng đang giao</a>
-                    <a href="{{route('manager.orders', 'received')}}" class="btn btn-outline-brand btn-square" @if (Str::contains(url()->current(), '/received')) active @endif>Đơn hàng đã hoàn thành</a>
+                    <a href="{{route('manager.orders', 'received')}}" class="btn btn-outline-brand btn-square @if (Str::contains(url()->current(), '/received')) active @endif">Đơn hàng đã hoàn thành</a>
                 </div>
                 <div class="float-right">
                     <form method="GET" action="{{ route("manager.orders.search") }}">
